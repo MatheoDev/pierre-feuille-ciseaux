@@ -39,6 +39,7 @@ let score1 = 0;
 let score2 = 0;
 const table = document.getElementById('rounds');
 const hands = document.getElementsByClassName('hand');
+const restart = document.getElementById('restart');
 
 const createLine = (score1, hand1, score2, hand2, win) => {
     let tr = document.createElement('tr');
@@ -62,6 +63,14 @@ const createLine = (score1, hand1, score2, hand2, win) => {
     tr.appendChild(td2);
     table.appendChild(tr);
 }
+
+restart.addEventListener('click', function(e) {
+    score2 = 0;
+    score1 = 0;
+    document.getElementById('hands').style.display = 'flex';
+    document.getElementById('results').style.display = 'none';
+    table.innerHTML = "";
+});
 
 let hand1 = '';
 let hand2 = '';
@@ -106,8 +115,12 @@ const game = () => {
     }
     
     if (score1 == 3) {
+        document.getElementById('hands').style.display = 'none';
+        document.getElementById('results').style.display = 'block';
         document.getElementById('winner').textContent = 'The player 1 win the game !';
     } else if (score2 == 3) {
-        document.getElementById('winner').textContent = 'The player 1 win the game !';
+        document.getElementById('hands').style.display = 'none';
+        document.getElementById('results').style.display = 'block';
+        document.getElementById('winner').textContent = 'The player 2 win the game !';
     }
 }

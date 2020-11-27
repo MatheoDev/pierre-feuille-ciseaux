@@ -11,7 +11,7 @@
     <body>
         <div class="container">
             <div class="jumbotron text-center">
-                <div class="row">
+                <div class="row" id="hands">
                     <div class="col">
                         <h1 class="display-3 hand"><i class="far fa-hand-scissors"></i></h1>
                     </div>
@@ -22,11 +22,12 @@
                         <h1 class="display-3 hand"><i class="far fa-hand-paper"></i></h1>
                     </div>
                 </div>
-            </div>
-
-            <div class="row text-center mb-4">
-                <div class="col">
-                    <h3 id="winner"></h3>
+                
+                <div class="row text-center" id="results" style="display: none;">
+                    <div class="col">
+                        <h3 id="winner"></h3>
+                        <button type="button" id="restart" class="btn btn-primary">Restart</button>
+                    </div>
                 </div>
             </div>
 
