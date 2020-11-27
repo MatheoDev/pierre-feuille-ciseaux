@@ -49,7 +49,7 @@ const createLine = (score1, hand1, score2, hand2, win) => {
     td0.textContent = hand1;
     let td1 = document.createElement('td');
     if (win == 0) {
-        td1.innerHTML = '<i class="fas fa-equals"></i> ' + score1 + ' | ' + score2 + ' <i class="text-secondary fas fa-equals"></i>';
+        td1.innerHTML = '<i class="fas fa-equals"></i> ' + score1 + ' | ' + score2 + ' <i class="fas fa-equals"></i>';
     } else if (win == 1) {
         td1.innerHTML = '<i class="text-success fas fa-plus"></i> ' + score1 + ' | ' + score2 + ' <i class="text-danger fas fa-minus"></i>';
     } else if (win == 2) {
