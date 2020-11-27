@@ -37,8 +37,9 @@ let player1 = new Player('Matheo');
 let player2 = new Player('IA');
 let score1 = 0;
 let score2 = 0;
-
 const table = document.getElementById('rounds');
+const hands = document.getElementsByClassName('hand');
+
 const createLine = (score1, hand1, score2, hand2, win) => {
     let tr = document.createElement('tr');
     tr.classList.add('table-light');
@@ -62,10 +63,26 @@ const createLine = (score1, hand1, score2, hand2, win) => {
     table.appendChild(tr);
 }
 
-do {
-    let hand1 = player1.play();
-    let hand2 = player2.play();
+let hand1 = '';
+let hand2 = '';
 
+hands[0].addEventListener('click', function(e) {
+    hand1 = player1.scissors();
+    hand2 = player2.play();
+    game();
+});
+hands[1].addEventListener('click', function(e) {
+    hand1 = player1.rock();
+    hand2 = player2.play();
+    game();
+});
+hands[2].addEventListener('click', function(e) {
+    hand1 = player1.paper();
+    hand2 = player2.play();
+    game();
+});
+
+const game = () => {
     if (hand1 == hand2) {
         createLine(score1, hand1, score2, hand2, 0);
     } else if (hand1 == 'paper' && hand2 == 'rock') {
@@ -87,10 +104,10 @@ do {
         score1++;
         createLine(score1, hand1, score2, hand2, 1);
     }
-
+    
     if (score1 == 3) {
         document.getElementById('winner').textContent = 'The player 1 win the game !';
     } else if (score2 == 3) {
         document.getElementById('winner').textContent = 'The player 1 win the game !';
     }
-} while (score1 != 3 && score2 != 3);
+}
